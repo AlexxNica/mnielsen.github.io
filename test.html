@@ -1,0 +1,34 @@
+<html>
+<head>
+</head>
+<body>
+
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.12/paper.js"></script>
+
+<script type="text/paperscript" canvas="test">
+var text = new PointText(new Point(10, 10));
+text.content = "0";
+
+var runBox = new Path.Rectangle(new Rectangle(50, 10, 60, 30));
+runBox.fillColor = "#dddddd";
+
+var playing = false;
+
+runBox.onClick = function(event) {
+    this.visible = false;
+    playing = true;
+    console.log(playing);
+}
+
+function onFrame(event) {
+    if (playing) {
+	text.content = "1";
+	playing = false;
+	}
+}
+</script>
+
+<canvas id="test" width="200" height="100"></canvas>
+
+<body>
+</html>
